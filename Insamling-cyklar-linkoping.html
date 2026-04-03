@@ -1,6 +1,6 @@
-<!DOCTYPE html> 
-<html lang="sv"> 
-<head> 
+<!DOCTYPE html>
+<html lang="sv">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cykelrensning i Linköping – Hämtning, lagring och hantering av övergivna cyklar</title>
@@ -145,18 +145,33 @@
       background-repeat: no-repeat;
       background-size: cover;
       transform: scale(1.02);
+      opacity: 0;
+      animation: heroFade 30s infinite ease-in-out;
     }
 
     .hero-slide:nth-child(1) {
       background-image: url('images/perro.jpg');
-      opacity: 1;
-      animation: heroSlide1 12s infinite ease-in-out;
+      animation-delay: 0s;
     }
 
     .hero-slide:nth-child(2) {
       background-image: url('images/perro1.jpg');
-      opacity: 0;
-      animation: heroSlide2 12s infinite ease-in-out;
+      animation-delay: 6s;
+    }
+
+    .hero-slide:nth-child(3) {
+      background-image: url('images/perro2.jpg');
+      animation-delay: 12s;
+    }
+
+    .hero-slide:nth-child(4) {
+      background-image: url('images/perro3.jpg');
+      animation-delay: 18s;
+    }
+
+    .hero-slide:nth-child(5) {
+      background-image: url('images/perro4.jpg');
+      animation-delay: 24s;
     }
 
     .hero-overlay {
@@ -167,14 +182,15 @@
       pointer-events: none;
     }
 
-    @keyframes heroSlide1 {
-      0%, 45% { opacity: 1; }
-      55%, 100% { opacity: 0; }
-    }
-
-    @keyframes heroSlide2 {
-      0%, 45% { opacity: 0; }
-      55%, 100% { opacity: 1; }
+    @keyframes heroFade {
+      0%,
+      16% {
+        opacity: 1;
+      }
+      20%,
+      100% {
+        opacity: 0;
+      }
     }
 
     .hero-content {
@@ -182,8 +198,6 @@
       z-index: 2;
       padding: 1.875rem 3rem;
       max-width: 52rem;
-      position: relative;
-      z-index: 1;
     }
 
     .hero h1,
@@ -436,6 +450,9 @@
           <div class="hero-slides">
             <div class="hero-slide"></div>
             <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
           </div>
           <div class="hero-overlay"></div>
           <div class="hero-content">
@@ -474,34 +491,34 @@
 
         <hr class="divider" />
 
-    <section class="content steps">
-  <h2 class="section-title center"><u>Cykelrensning – Steg för steg</u></h2>
+        <section class="content steps">
+          <h2 class="section-title center"><u>Cykelrensning – Steg för steg</u></h2>
 
-  <p>
-    <strong>1. Kostnadsberäkning</strong>
-    Vi inleder med att ta fram en offert utifrån fastighetens geografiska läge samt antalet hushåll eller lokaler som behöver rensas. Priset baseras på omfattningen av arbetet och anpassas efter era specifika behov.
-  </p>
+          <p>
+            <strong>1. Kostnadsberäkning</strong>
+            Vi inleder med att ta fram en offert utifrån fastighetens geografiska läge samt antalet hushåll eller lokaler som behöver rensas. Priset baseras på omfattningen av arbetet och anpassas efter era specifika behov.
+          </p>
 
-  <p>
-    <strong>2. Planering</strong>
-    När ni godkänt offerten bokar vi tillsammans in ett datum för rensningen. Fyra veckor innan sätter vi upp tydlig information på anslagstavlor, vid cykelställ, entréer och i cykelrum. Boende informeras om att cyklarna kommer att märkas upp och att de själva ska ta bort lappen från sin cykel om den används. Enkla instruktioner minskar missförstånd och gör processen smidig.
-  </p>
+          <p>
+            <strong>2. Planering</strong>
+            När ni godkänt offerten bokar vi tillsammans in ett datum för rensningen. Fyra veckor innan sätter vi upp tydlig information på anslagstavlor, vid cykelställ, entréer och i cykelrum. Boende informeras om att cyklarna kommer att märkas upp och att de själva ska ta bort lappen från sin cykel om den används. Enkla instruktioner minskar missförstånd och gör processen smidig.
+          </p>
 
-  <p>
-    <strong>3. Genomförande</strong>
-    På den avtalade dagen genomför vi rensningen. Vårt team samlar in alla cyklar som har kvar märkning, även de som är fastlåsta. Samtliga cyklar dokumenteras och transporteras därefter till ett förråd – antingen hos er eller i vår egen förvaringslokal.
-  </p>
+          <p>
+            <strong>3. Genomförande</strong>
+            På den avtalade dagen genomför vi rensningen. Vårt team samlar in alla cyklar som har kvar märkning, även de som är fastlåsta. Samtliga cyklar dokumenteras och transporteras därefter till ett förråd – antingen hos er eller i vår egen förvaringslokal.
+          </p>
 
-  <p>
-    <strong>4. Förvaring</strong>
-    De insamlade cyklarna förvaras i tre månader enligt <a href="https://lagen.nu/1938:121" target="_blank" rel="noopener noreferrer">lagen om hittegods</a>. Under denna tid sammanställer vi en detaljerad lista över cyklarna. Det ger tidigare ägare möjlighet att återfå sin cykel.
-  </p>
+          <p>
+            <strong>4. Förvaring</strong>
+            De insamlade cyklarna förvaras i tre månader enligt <a href="https://lagen.nu/1938:121" target="_blank" rel="noopener noreferrer">lagen om hittegods</a>. Under denna tid sammanställer vi en detaljerad lista över cyklarna. Det ger tidigare ägare möjlighet att återfå sin cykel.
+          </p>
 
-  <p>
-    <strong>5. Återbruk och återvinning</strong>
-    Efter förvaring hanterar vi cyklarna på ett hållbart sätt. De cyklar som fortfarande är i gott skick går vidare till nya ägare via CykelRensarna. De som inte går att rädda återvinns eller tas om hand som reservdelar.
-  </p>
-</section>
+          <p>
+            <strong>5. Återbruk och återvinning</strong>
+            Efter förvaring hanterar vi cyklarna på ett hållbart sätt. De cyklar som fortfarande är i gott skick går vidare till nya ägare via CykelRensarna. De som inte går att rädda återvinns eller tas om hand som reservdelar.
+          </p>
+        </section>
 
         <hr id="boka" class="divider" />
 
@@ -556,65 +573,66 @@
 
         <hr class="divider" />
 
-<section id="omoss" class="content">
-  <h2 class="section-title center"><u>Om oss</u></h2>
-  <p>
-    CykelRensarna gör det enkelt att bli av med övergivna cyklar – professionellt, smidigt och hållbart.
-  </p>
-  <p>
-    Vi hjälper bostadsrättsföreningar, fastighetsägare och företag att rensa upp cykelrum, gårdar och
-    gemensamma utrymmen utan krångel. Ni slipper planering, logistik och efterarbete – vi tar hand om allt.
-    Från märkning och information till upphämtning och ansvarstagande hantering av cyklarna.
-  </p>
-  <p>
-    Det bästa? Cyklar som fortfarande har liv kvar får en andra chans genom vårt återbruksnätverk, medan skrot
-    återvinns på rätt sätt. På så sätt gör ni en insats för både miljön och trivseln.
-  </p>
-  <p>
-    Vill ni frigöra plats, skapa ordning och samtidigt göra en klimatinsats?
-    <a href="#boka">Boka</a> en rensning med oss – det har aldrig varit enklare.
-  </p>
-</section>
+        <section id="omoss" class="content">
+          <h2 class="section-title center"><u>Om oss</u></h2>
+          <p>
+            CykelRensarna gör det enkelt att bli av med övergivna cyklar – professionellt, smidigt och hållbart.
+          </p>
+          <p>
+            Vi hjälper bostadsrättsföreningar, fastighetsägare och företag att rensa upp cykelrum, gårdar och
+            gemensamma utrymmen utan krångel. Ni slipper planering, logistik och efterarbete – vi tar hand om allt.
+            Från märkning och information till upphämtning och ansvarstagande hantering av cyklarna.
+          </p>
+          <p>
+            Det bästa? Cyklar som fortfarande har liv kvar får en andra chans genom vårt återbruksnätverk, medan skrot
+            återvinns på rätt sätt. På så sätt gör ni en insats för både miljön och trivseln.
+          </p>
+          <p>
+            Vill ni frigöra plats, skapa ordning och samtidigt göra en klimatinsats?
+            <a href="#boka">Boka</a> en rensning med oss – det har aldrig varit enklare.
+          </p>
+        </section>
 
         <hr class="divider" />
 
-<section id="vanligafragor" class="content faq">
-  <h2 class="section-title center"><u>Vanliga Frågor</u></h2>
+        <section id="vanligafragor" class="content faq">
+          <h2 class="section-title center"><u>Vanliga Frågor</u></h2>
 
-  <p>
-    <strong>Vad är skillnaden mellan cykelrensning och gratis cykelhämtning?</strong>
-    Cykelrensning är vår kompletta tjänst för BRF:er och fastigheter där vi sköter hela processen – från märkning
-    och information till boende, till uppsamling, förvaring i 3 månader enligt
-    <a href="https://lagen.nu/1938:121" target="_blank" rel="noopener noreferrer">lagen om hittegods</a>.
-    Gratis cykelhämtning är till för dig som redan har samlat in cyklar – som privatperson, BRF eller företag –
-    och bara vill bli av med dem på ett smidigt och hållbart sätt.
-  </p>
+          <p>
+            <strong>Vad är skillnaden mellan cykelrensning och gratis cykelhämtning?</strong>
+            Cykelrensning är vår kompletta tjänst för BRF:er och fastigheter där vi sköter hela processen – från märkning
+            och information till boende, till uppsamling, förvaring i 3 månader enligt
+            <a href="https://lagen.nu/1938:121" target="_blank" rel="noopener noreferrer">lagen om hittegods</a>.
+            Gratis cykelhämtning är till för dig som redan har samlat in cyklar – som privatperson, BRF eller företag –
+            och bara vill bli av med dem på ett smidigt och hållbart sätt.
+          </p>
 
-  <p>
-    <strong>Vad händer med cyklarna ni hämtar?</strong>
-    Vi ger cyklarna en andra chans! Cyklar i bra skick servas och säljs via vår plattform CykelRenserna.
-    Trasiga cyklar renoveras, demonteras till reservdelar eller återvinns på ett miljövänligt sätt.
-    Inget slängs i onödan.
-  </p>
+          <p>
+            <strong>Vad händer med cyklarna ni hämtar?</strong>
+            Vi ger cyklarna en andra chans! Cyklar i bra skick servas och säljs via vår plattform CykelRenserna.
+            Trasiga cyklar renoveras, demonteras till reservdelar eller återvinns på ett miljövänligt sätt.
+            Inget slängs i onödan.
+          </p>
 
-  <p>
-    <strong>Kan ni hämta trasiga eller ofullständiga cyklar?</strong>
-    Ja! Vi tar emot cyklar i alla skick. En trasig cykel kan ofta få nytt liv – eller bidra med reservdelar
-    till andra. Det är ett resurssnålt och cirkulärt sätt att minska avfall.
-  </p>
+          <p>
+            <strong>Kan ni hämta trasiga eller ofullständiga cyklar?</strong>
+            Ja! Vi tar emot cyklar i alla skick. En trasig cykel kan ofta få nytt liv – eller bidra med reservdelar
+            till andra. Det är ett resurssnålt och cirkulärt sätt att minska avfall.
+          </p>
 
-  <p>
-    <strong>Ingår information till boende i tjänsten?</strong>
-    Ja, det gör det. Vi tillhandahåller märklappar, informationsbrev och skyltmaterial. Vi kan även ta hand om
-    hela kommunikationsdelen – men om ni vill sätta upp lappar själva går det också bra.
-  </p>
+          <p>
+            <strong>Ingår information till boende i tjänsten?</strong>
+            Ja, det gör det. Vi tillhandahåller märklappar, informationsbrev och skyltmaterial. Vi kan även ta hand om
+            hela kommunikationsdelen – men om ni vill sätta upp lappar själva går det också bra.
+          </p>
 
-  <p>
-    <strong>Kan ni hjälpa oss även om vi redan gjort en cykelrensning?</strong>
-    Absolut! Om ni redan märkt upp och samlat in cyklar men bara vill bli av med dem, kan vi hämta dem helt utan
-    kostnad. Det är en perfekt lösning efter en egeninsats från BRF eller fastighet.
-  </p>
-</section>
+          <p>
+            <strong>Kan ni hjälpa oss även om vi redan gjort en cykelrensning?</strong>
+            Absolut! Om ni redan märkt upp och samlat in cyklar men bara vill bli av med dem, kan vi hämta dem helt utan
+            kostnad. Det är en perfekt lösning efter en egeninsats från BRF eller fastighet.
+          </p>
+        </section>
+
         <div class="mobile-footer-nav">
           <p>
             <a href="#vanligafragor">Vanliga frågor</a><br />
