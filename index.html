@@ -536,14 +536,17 @@
               Har ni några frågor? Hör gärna av er – vi hjälper gärna till.
             </p>
 
-            <form class="form">
+            <form class="form" action="https://formspree.io/f/mdapwdwn" method="POST">
+              <input type="hidden" name="_subject" value="Ny bokning: Cykelrensning" />
+              <input type="hidden" name="form_type" value="cykelrensning" />
+
               <div class="field"><input type="text" name="kontaktperson" placeholder="Kontaktperson" required /></div>
               <div class="field"><input type="text" name="verksamhet" placeholder="Verksamhet" required /></div>
-              <div class="field"><input type="text" name="namn-pa-verksamhet" placeholder="Namn på verksamhet" required /></div>
-              <div class="field"><input type="email" name="epost" placeholder="E-post" required /></div>
+              <div class="field"><input type="text" name="namn_pa_verksamhet" placeholder="Namn på verksamhet" required /></div>
+              <div class="field"><input type="email" name="email" placeholder="E-post" required /></div>
               <div class="field"><input type="tel" name="telefonnummer" placeholder="Telefonnummer" required /></div>
-              <div class="field"><input type="text" name="antal-hushall" placeholder="Totalt antal lägenheter/hushåll" required /></div>
-              <div class="field"><input type="text" name="antal-cykelrum" placeholder="Antal cykelrum" required /></div>
+              <div class="field"><input type="text" name="antal_hushall" placeholder="Totalt antal lägenheter/hushåll" required /></div>
+              <div class="field"><input type="text" name="antal_cykelrum" placeholder="Antal cykelrum" required /></div>
               <div class="field"><textarea name="meddelande" placeholder="Meddelande" required></textarea></div>
               <button type="submit">Boka cykelrensning</button>
             </form>
@@ -560,11 +563,14 @@
               vi med bekräftelse och förslag på datum.
             </p>
 
-            <form class="form">
+            <form class="form" action="https://formspree.io/f/xqegylya" method="POST">
+              <input type="hidden" name="_subject" value="Ny bokning: Gratis hämtning" />
+              <input type="hidden" name="form_type" value="gratis_hamtning" />
+
               <div class="field"><input type="text" name="kontaktperson" placeholder="Kontaktperson" required /></div>
-              <div class="field"><input type="email" name="epost" placeholder="E-post" required /></div>
+              <div class="field"><input type="email" name="email" placeholder="E-post" required /></div>
               <div class="field"><input type="tel" name="telefonnummer" placeholder="Telefonnummer" required /></div>
-              <div class="field"><input type="text" name="antal-cyklar" placeholder="Antal cyklar" required /></div>
+              <div class="field"><input type="text" name="antal_cyklar" placeholder="Antal cyklar" required /></div>
               <div class="field"><textarea name="meddelande" placeholder="Meddelande" required></textarea></div>
               <button type="submit">Boka gratis hämtning</button>
             </form>
