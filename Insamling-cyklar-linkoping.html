@@ -1,0 +1,661 @@
+<!DOCTYPE html> 
+<html lang="sv"> 
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cykelrensning i Linköping – Hämtning, lagring och hantering av övergivna cyklar</title>
+  <meta
+    name="description"
+    content="Cykelrensning i Linköping för BRF, hyresvärdar och fastighetsägare. Märkning, uppsamling, förvaring och hållbar hantering av övergivna cyklar."
+  />
+  <meta name="theme-color" content="#07B860" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #4f4f4f;
+      --line: #111111;
+      --green: #07b860;
+      --light-green: #e1f2e9;
+      --radius: 0.5rem;
+      --shadow: 0.18rem 0.174rem 0.875rem rgba(0, 0, 0, 0.25);
+      --max-width: 65rem;
+      --content-padding: 3rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      background:
+        linear-gradient(0deg, rgba(38, 51, 41, 0.188) 0%, rgba(133, 255, 152, 0.169) 60%),
+        url('images/bg.jpg') center / 40rem repeat;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0.5rem auto;
+      background: var(--bg);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .inner {
+      padding: var(--content-padding);
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo img {
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      text-align: center;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 0.375rem 3rem;
+      gap: 2rem;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: 31% 41% 28%;
+      align-items: center;
+      text-align: center;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 0.375rem 3rem;
+      gap: 2rem;
+    }
+
+    .top-nav,
+    .mobile-footer-nav {
+      text-align: center;
+      margin: 0.75rem 0 0;
+    }
+
+    .mobile-footer-nav {
+      display: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 30rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background: #000;
+      isolation: isolate;
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transform: scale(1.02);
+    }
+
+    .hero-slide:nth-child(1) {
+      background-image: url('images/perro.jpg');
+      opacity: 1;
+      animation: heroSlide1 12s infinite ease-in-out;
+    }
+
+    .hero-slide:nth-child(2) {
+      background-image: url('images/perro1.jpg');
+      opacity: 0;
+      animation: heroSlide2 12s infinite ease-in-out;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.38);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes heroSlide1 {
+      0%, 45% { opacity: 1; }
+      55%, 100% { opacity: 0; }
+    }
+
+    @keyframes heroSlide2 {
+      0%, 45% { opacity: 0; }
+      55%, 100% { opacity: 1; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.875rem 3rem;
+      max-width: 52rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1,
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .hero h1 {
+      text-shadow: 0 0 7px rgba(0, 0, 0, 0.5), 0 0 25px black;
+    }
+
+    .hero p {
+      margin: 1.5rem 0;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.25), 0 0 3px black, 0 0 5px black;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      min-width: 10rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      padding: 0 0.5rem;
+      border-radius: 0.25rem;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1.125rem;
+    }
+
+    .button-primary {
+      background: var(--green);
+      box-shadow: var(--shadow);
+    }
+
+    .button-secondary {
+      background: #000;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid #000;
+      margin: 1.5rem 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .content p {
+      margin: 0 0 1rem;
+    }
+
+    .steps p strong,
+    .faq p strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .booking-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: linear-gradient(90deg, var(--light-green) 0%, var(--light-green) 48%, #fff 48%, #fff 52%, var(--light-green) 52%, var(--light-green) 100%);
+      padding: 1rem 0;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .booking-column {
+      padding: 0 1rem;
+    }
+
+    .booking-column p {
+      max-width: 24.875rem;
+    }
+
+    .form {
+      width: 24rem;
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+
+    .form .field {
+      margin-top: 1rem;
+    }
+
+    .form .field:first-child {
+      margin-top: 0;
+    }
+
+    .form input,
+    .form textarea {
+      width: 100%;
+      border: 1px solid #000;
+      border-radius: 0.125rem;
+      background: #fff;
+      color: #000;
+      font: inherit;
+      padding: 0 0.875rem;
+    }
+
+    .form input {
+      height: 2.5rem;
+      line-height: calc(2.5rem - 2px);
+    }
+
+    .form textarea {
+      min-height: 10rem;
+      padding: 0.875rem;
+      resize: vertical;
+    }
+
+    .form button {
+      margin-top: 1rem;
+      height: 2.5rem;
+      padding: 0 1.25rem;
+      border: 0;
+      border-radius: 0.25rem;
+      background: var(--green);
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .footer-links {
+      margin-top: 3rem;
+      background: #e9f7f0;
+      border-top: 3px solid #78b395;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      align-items: center;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 0.5rem 0;
+      font-size: 0.875rem;
+    }
+
+    .map iframe {
+      width: 300px;
+      max-width: 100%;
+      height: 225px;
+      border: 0;
+    }
+
+    @media (max-width: 736px) {
+      html {
+        font-size: 11pt;
+      }
+
+      .inner {
+        padding: 3rem 2rem;
+      }
+
+      .logo img {
+        height: 6.4rem;
+      }
+
+      .topbar {
+        display: none;
+      }
+
+      .booking-section,
+      .contact-section,
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-section {
+        background: #e1f2e9;
+      }
+
+      .hero {
+        min-height: 22.5rem;
+      }
+
+      .hero-content {
+        padding: 1.875rem 2rem;
+      }
+
+      .mobile-footer-nav {
+        display: block;
+        background: #e9f7f0;
+        border-top: 3px solid #78b395;
+        padding: 0.5rem 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .button-group {
+        flex-direction: column;
+      }
+
+      .button,
+      .form button {
+        width: 100%;
+        max-width: 32rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="inner">
+      <section id="startsida">
+        <div class="logo">
+          <img src="images/image01.jpg" alt="Linköping Cyklar" />
+        </div>
+
+        <div class="topbar">
+          <div>
+            <p>
+              Ring oss: <a href="tel:0706644445">070-664 44 45</a><br />
+              E-post: <a href="mailto:kontakt@cykelrensarna.se">kontakt@cykelrensarna.se</a>
+            </p>
+          </div>
+          <div>
+            <p>
+              Adress: <a href="#kontaktaoss">Östsvängen 1A, 582 47, Linköping, Sverige</a>
+            </p>
+          </div>
+        </div>
+
+        <p class="top-nav">
+          <a href="#vanligafragor">Vanliga Frågor</a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="#kontaktaoss">Kontakta oss</a>
+          &nbsp;&nbsp;&nbsp;
+          <a href="#omoss">Om oss</a>
+        </p>
+
+        <section class="hero">
+          <div class="hero-slides">
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+          </div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1>Övergivna cyklar som tar plats?<br />Vi tar hand om dem – snabbt, smidigt och hållbart</h1>
+            <p>
+              Oavsett om du är fastighetsägare, Brf, Hrf, privatperson eller företag så hjälper vi dig att rensa
+              effektivt och miljövänligt i Linköping.
+            </p>
+            <div class="button-group">
+              <a class="button button-primary" href="#boka">Boka nu!</a>
+              <a class="button button-secondary" href="#lasmer">Läs mer</a>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="lasmer" class="content">
+          <h2 class="section-title center"><u>Hur fungerar cykelrensning?</u></h2>
+          <p>
+            Vi erbjuder cykelrensning i Linköping för bostadsrättsföreningar, hyresvärdar och fastighetsägare
+            som vill ta bort övergivna cyklar på innergårdar eller i cykelrum.
+          </p>
+          <p>
+            Vi tar hand om hela processen: från märkning av cyklar och information till boende, till upphämtning,
+            förvaring i tre månader. När förvaringstiden är över ser vi till att cyklarna återbrukas eller
+            återvinns på ett ansvarsfullt sätt.
+          </p>
+          <p>
+            Ni väljer själva om ni vill att vi hanterar hela rensningen, eller bara hjälper till med delar av den.
+          </p>
+          <p>
+            Fyll i <a href="#boka">formuläret</a> så återkommer vi med ett förslag som passar just er fastighet.
+          </p>
+        </section>
+
+        <hr class="divider" />
+
+    <section class="content steps">
+  <h2 class="section-title center"><u>Cykelrensning – Steg för steg</u></h2>
+
+  <p>
+    <strong>1. Kostnadsberäkning</strong>
+    Vi inleder med att ta fram en offert utifrån fastighetens geografiska läge samt antalet hushåll eller lokaler som behöver rensas. Priset baseras på omfattningen av arbetet och anpassas efter era specifika behov.
+  </p>
+
+  <p>
+    <strong>2. Planering</strong>
+    När ni godkänt offerten bokar vi tillsammans in ett datum för rensningen. Fyra veckor innan sätter vi upp tydlig information på anslagstavlor, vid cykelställ, entréer och i cykelrum. Boende informeras om att cyklarna kommer att märkas upp och att de själva ska ta bort lappen från sin cykel om den används. Enkla instruktioner minskar missförstånd och gör processen smidig.
+  </p>
+
+  <p>
+    <strong>3. Genomförande</strong>
+    På den avtalade dagen genomför vi rensningen. Vårt team samlar in alla cyklar som har kvar märkning, även de som är fastlåsta. Samtliga cyklar dokumenteras och transporteras därefter till ett förråd – antingen hos er eller i vår egen förvaringslokal.
+  </p>
+
+  <p>
+    <strong>4. Förvaring</strong>
+    De insamlade cyklarna förvaras i tre månader enligt <a href="https://lagen.nu/1938:121" target="_blank" rel="noopener noreferrer">lagen om hittegods</a>. Under denna tid sammanställer vi en detaljerad lista över cyklarna. Det ger tidigare ägare möjlighet att återfå sin cykel.
+  </p>
+
+  <p>
+    <strong>5. Återbruk och återvinning</strong>
+    Efter förvaring hanterar vi cyklarna på ett hållbart sätt. De cyklar som fortfarande är i gott skick går vidare till nya ägare via CykelRensarna. De som inte går att rädda återvinns eller tas om hand som reservdelar.
+  </p>
+</section>
+
+        <hr id="boka" class="divider" />
+
+        <section class="booking-section">
+          <div class="booking-column">
+            <h2 class="section-title"><u>Cykelrensning – Komplett tjänst</u></h2>
+            <p>
+              Vill ni få hjälp att rensa bort övergivna cyklar från fastigheten? Fyll i formuläret så återkommer
+              vi snabbt med ett kostnadsförslag och planeringsförslag för en cykelrensning.
+            </p>
+            <p>
+              Vi tar hand om hela processen – från information till boende till upphämtning och förvaring av cyklarna.
+            </p>
+            <p>
+              Har ni några frågor? Hör gärna av er – vi hjälper gärna till.
+            </p>
+
+            <form class="form">
+              <div class="field"><input type="text" name="kontaktperson" placeholder="Kontaktperson" required /></div>
+              <div class="field"><input type="text" name="verksamhet" placeholder="Verksamhet" required /></div>
+              <div class="field"><input type="text" name="namn-pa-verksamhet" placeholder="Namn på verksamhet" required /></div>
+              <div class="field"><input type="email" name="epost" placeholder="E-post" required /></div>
+              <div class="field"><input type="tel" name="telefonnummer" placeholder="Telefonnummer" required /></div>
+              <div class="field"><input type="text" name="antal-hushall" placeholder="Totalt antal lägenheter/hushåll" required /></div>
+              <div class="field"><input type="text" name="antal-cykelrum" placeholder="Antal cykelrum" required /></div>
+              <div class="field"><textarea name="meddelande" placeholder="Meddelande" required></textarea></div>
+              <button type="submit">Boka cykelrensning</button>
+            </form>
+          </div>
+
+          <div class="booking-column">
+            <h2 class="section-title"><u>Gratis hämtning av cyklar</u></h2>
+            <p>
+              Vill du bli av med cyklar som inte längre används? Vår kostnadsfria cykelhämtning passar både
+              privatpersoner, BRF och företag som redan samlat ihop cyklar.
+            </p>
+            <p>
+              Vi hämtar cyklar på plats – enkelt, miljövänligt och utan kostnad. Fyll i formuläret så återkommer
+              vi med bekräftelse och förslag på datum.
+            </p>
+
+            <form class="form">
+              <div class="field"><input type="text" name="kontaktperson" placeholder="Kontaktperson" required /></div>
+              <div class="field"><input type="email" name="epost" placeholder="E-post" required /></div>
+              <div class="field"><input type="tel" name="telefonnummer" placeholder="Telefonnummer" required /></div>
+              <div class="field"><input type="text" name="antal-cyklar" placeholder="Antal cyklar" required /></div>
+              <div class="field"><textarea name="meddelande" placeholder="Meddelande" required></textarea></div>
+              <button type="submit">Boka gratis hämtning</button>
+            </form>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+<section id="omoss" class="content">
+  <h2 class="section-title center"><u>Om oss</u></h2>
+  <p>
+    CykelRensarna gör det enkelt att bli av med övergivna cyklar – professionellt, smidigt och hållbart.
+  </p>
+  <p>
+    Vi hjälper bostadsrättsföreningar, fastighetsägare och företag att rensa upp cykelrum, gårdar och
+    gemensamma utrymmen utan krångel. Ni slipper planering, logistik och efterarbete – vi tar hand om allt.
+    Från märkning och information till upphämtning och ansvarstagande hantering av cyklarna.
+  </p>
+  <p>
+    Det bästa? Cyklar som fortfarande har liv kvar får en andra chans genom vårt återbruksnätverk, medan skrot
+    återvinns på rätt sätt. På så sätt gör ni en insats för både miljön och trivseln.
+  </p>
+  <p>
+    Vill ni frigöra plats, skapa ordning och samtidigt göra en klimatinsats?
+    <a href="#boka">Boka</a> en rensning med oss – det har aldrig varit enklare.
+  </p>
+</section>
+
+        <hr class="divider" />
+
+<section id="vanligafragor" class="content faq">
+  <h2 class="section-title center"><u>Vanliga Frågor</u></h2>
+
+  <p>
+    <strong>Vad är skillnaden mellan cykelrensning och gratis cykelhämtning?</strong>
+    Cykelrensning är vår kompletta tjänst för BRF:er och fastigheter där vi sköter hela processen – från märkning
+    och information till boende, till uppsamling, förvaring i 3 månader enligt
+    <a href="https://lagen.nu/1938:121" target="_blank" rel="noopener noreferrer">lagen om hittegods</a>.
+    Gratis cykelhämtning är till för dig som redan har samlat in cyklar – som privatperson, BRF eller företag –
+    och bara vill bli av med dem på ett smidigt och hållbart sätt.
+  </p>
+
+  <p>
+    <strong>Vad händer med cyklarna ni hämtar?</strong>
+    Vi ger cyklarna en andra chans! Cyklar i bra skick servas och säljs via vår plattform CykelRenserna.
+    Trasiga cyklar renoveras, demonteras till reservdelar eller återvinns på ett miljövänligt sätt.
+    Inget slängs i onödan.
+  </p>
+
+  <p>
+    <strong>Kan ni hämta trasiga eller ofullständiga cyklar?</strong>
+    Ja! Vi tar emot cyklar i alla skick. En trasig cykel kan ofta få nytt liv – eller bidra med reservdelar
+    till andra. Det är ett resurssnålt och cirkulärt sätt att minska avfall.
+  </p>
+
+  <p>
+    <strong>Ingår information till boende i tjänsten?</strong>
+    Ja, det gör det. Vi tillhandahåller märklappar, informationsbrev och skyltmaterial. Vi kan även ta hand om
+    hela kommunikationsdelen – men om ni vill sätta upp lappar själva går det också bra.
+  </p>
+
+  <p>
+    <strong>Kan ni hjälpa oss även om vi redan gjort en cykelrensning?</strong>
+    Absolut! Om ni redan märkt upp och samlat in cyklar men bara vill bli av med dem, kan vi hämta dem helt utan
+    kostnad. Det är en perfekt lösning efter en egeninsats från BRF eller fastighet.
+  </p>
+</section>
+        <div class="mobile-footer-nav">
+          <p>
+            <a href="#vanligafragor">Vanliga frågor</a><br />
+            <a href="#kontaktaoss">Kontakta oss</a><br />
+            <a href="#omoss">Om oss</a><br />
+            <a href="#boka">Boka</a>
+          </p>
+        </div>
+
+        <section id="kontaktaoss" class="footer-links full">
+          <div>
+            <p>
+              <a href="#vanligafragor">Vanliga frågor</a><br />
+              <a href="#kontaktaoss">Kontakta oss</a><br />
+              <a href="#omoss">Om oss</a><br />
+              <a class="button button-primary" href="#boka">Boka</a>
+            </p>
+          </div>
+          <div>
+            <p>
+              Cykelrensarna.se<br />
+              Östsvängen 1A<br />
+              582 47 Linköping<br />
+              Sverige<br />
+              <a href="tel:0706644445">070-664 44 45</a><br />
+              <a href="mailto:kontakt@cykelrensarna.se">kontakt@cykelrensarna.se</a>
+            </p>
+          </div>
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps?q=Link%C3%B6ping&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Karta över Linköping"
+            ></iframe>
+          </div>
+        </section>
+
+        <div class="footer-bottom">©2024–2025 Cykelrensarna.se</div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
